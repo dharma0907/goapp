@@ -37,6 +37,23 @@ pipeline{
                 }
             }
         }
+        stage('Wait for 5 minutes') {
+            steps {
+                echo 'Waiting for 5 minutes...'
+                sleep time: 5, unit: 'MINUTES'
+            }
+        }
+        stage("destroy an EKS Cluster""){
+            steps{
+                echo "========destroy eks cluster commands from terraform code========"
+                script{
+                     dir(aws_eks){
+                        sh "terraform destroy -auto-approve"
+                     }
+
+                }
+            }
+        }
     }
     post{
         always{
