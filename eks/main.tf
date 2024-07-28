@@ -1,3 +1,18 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
+
+
 // after creating provider file we need to crerate vpc , here we are using modules
 
 // below code for no.of availabity zones
