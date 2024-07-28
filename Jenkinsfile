@@ -10,7 +10,7 @@ pipeline{
             steps{
                 echo "========executing eks cluster commands from terraform code========"
                 script{
-                     dir(eks){
+                     dir('eks'){
                         sh "terraform init"
                         sh "terraform plan"
                         sh "terraform apply -auto-approve"
@@ -29,7 +29,7 @@ pipeline{
             steps{
                 echo "========executing k8 manifest files suing kubectl commands========"
                 script{
-                     dir(k8/manifest){
+                     dir('k8/manifest'){
                          sh "aws eks update-kubeconfig  --name democluster"
                          sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/aws/deploy.yaml"
                          sh "kubectl apply -f deployment.yaml"
