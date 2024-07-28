@@ -10,7 +10,7 @@ pipeline{
             steps{
                 echo "========executing eks cluster commands from terraform code========"
                 script{
-                     dir(aws_eks){
+                     dir(eks){
                         sh "terraform init"
                         sh "terraform plan"
                         sh "terraform apply -auto-approve"
