@@ -15,11 +15,18 @@ pipeline{
                 echo "========executing eks cluster commands from terraform code========"
                 script{
                      dir(aws_eks){
-                         sh "terraform init"
+                        sh "terraform init"
+                        sh "terraform plan"
                         sh "terraform apply -auto-approve"
                      }
 
                 }
+            }
+        }
+        stage('Wait for 10 minutes') {
+            steps {
+                echo 'Waiting for 5 minutes...'
+                sleep time: 10, unit: 'MINUTES'
             }
         }
         stage("executing k8 manifest files""){
