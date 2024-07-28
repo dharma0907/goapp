@@ -11,6 +11,7 @@ pipeline{
                 echo "========executing eks cluster commands from terraform code========"
                 script{
                      dir('eks'){
+                        sh "erraform validate"
                         sh "terraform init"
                         sh "terraform plan"
                         sh "terraform apply -auto-approve"
