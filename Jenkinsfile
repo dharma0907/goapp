@@ -10,7 +10,7 @@ pipeline{
     }
     }
     stages{
-        stage("Create an EKS Cluster""){
+        stage("Create an EKS Cluster"){
             steps{
                 echo "========executing eks cluster commands from terraform code========"
                 script{
