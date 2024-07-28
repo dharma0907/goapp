@@ -73,13 +73,6 @@ resource "aws_subnet" "private_subnet2" {
 
 }
 
-resource "aws_eip" "nat" {
-  vpc = true
-  tags = {
-    Name = "nat"
-  }
-}
-
 //creating natGateway
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
