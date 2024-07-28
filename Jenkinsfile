@@ -29,7 +29,7 @@ pipeline{
                 sleep time: 10, unit: 'MINUTES'
             }
         }
-        stage("executing k8 manifest files""){
+        stage("executing k8 manifest files"){
             steps{
                 echo "========executing k8 manifest files suing kubectl commands========"
                 script{
@@ -50,7 +50,7 @@ pipeline{
                 sleep time: 5, unit: 'MINUTES'
             }
         }
-        stage("destroy an EKS Cluster""){
+        stage("destroy an EKS Cluster"){
             steps{
                 echo "========destroy eks cluster commands from terraform code========"
                 script{
