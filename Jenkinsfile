@@ -33,6 +33,7 @@ pipeline{
                      dir('k8/manifest'){
                          sh "aws eks update-kubeconfig  --name democluster"
                          sh "kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.1/deploy/static/provider/aws/deploy.yaml"
+                         sh "sleep 100"
                          sh "kubectl apply -f deployment.yaml"
                          sh "kubectl apply -f service.yaml"
                          sh "kubectl apply -f ingress.yaml"
@@ -51,7 +52,7 @@ pipeline{
             steps{
                 echo "========destroy eks cluster commands from terraform code========"
                 script{
-                     dir(aws_eks){
+                     dir('eks'){
                         sh "terraform destroy -auto-approve"
                      }
 
